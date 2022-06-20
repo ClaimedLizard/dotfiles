@@ -1,3 +1,8 @@
+" Exit early if running from VSCode
+if exists('g:vscode')
+    finish
+endif
+
 call plug#begin()
 
 " ------ Airline status bar ------
@@ -7,7 +12,6 @@ call plug#begin()
 Plug 'nvim-lualine/lualine.nvim'
 
 " ------ Themes ------
-Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'preservim/vim-colors-pencil'
 Plug 'oyvinmar/vim-snazzy'
 Plug 'tjdevries/colorbuddy.nvim'
@@ -16,6 +20,7 @@ Plug 'bbenzikry/snazzybuddy.nvim'
 " ------ NERDTree ------
 Plug 'scrooloose/nerdtree'
 
+" ------ Treesitter ------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " ------ TABS ------
@@ -42,6 +47,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ------ QML syntax highlighting for vim ------
 Plug 'peterhoeg/vim-qml'
+
+" ------ Git gutter ------
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -161,7 +169,7 @@ let mapleader = " "
 :command PI PlugInstall
 :command PC PlugClean
 :command NT NERDTree
-:command VT vsplit | term
+:command TT vsplit | term
 :command TSU TSUpdate
 :command HI call SynStack()
 :command COC CocConfig
