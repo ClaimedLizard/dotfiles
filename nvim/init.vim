@@ -1,4 +1,4 @@
-" Exit early if running from VSCode
+"e<Exit early if running from VSCode
 if exists('g:vscode')
     finish
 endif
@@ -178,7 +178,7 @@ let mapleader = " "
 " ------ Nerdtree map to Leader + n ------
 nmap <silent> <leader>n :NERDTreeToggle<CR>
 
-" ------Move to previous/next tabs------
+" ------ Move to previous/next tabs ------
 nnoremap <silent>    <C-j> :BufferPrevious<CR>
 nnoremap <silent>    <C-k> :BufferNext<CR>
 
@@ -187,6 +187,9 @@ nnoremap <silent>    <C-x> :BufferClose<CR>
 
 " ------ Shortcut for disabling search highlights ------
 nnoremap <leader>h :noh<CR>
+
+" ------ Shortcut for next and prev in the quickfix list ------
+nnoremap <silent> <C-]> :cn<CR>
 
 " ------ Customize tab icons ------
 let bufferline = get(g:, 'bufferline', {})
