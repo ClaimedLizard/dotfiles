@@ -1,25 +1,19 @@
-"e<Exit early if running from VSCode
+"Exit early if running from VSCode
 if exists('g:vscode')
     finish
 endif
 
 call plug#begin()
-
-" ------ Airline status bar ------
-" Plug 'vim-airline/vim-airline'
- 
 " ------ Lualine status bar ------
 Plug 'nvim-lualine/lualine.nvim'
 
 " ------ Themes ------
-Plug 'preservim/vim-colors-pencil'
-Plug 'oyvinmar/vim-snazzy'
 Plug 'tjdevries/colorbuddy.nvim'
 Plug 'bbenzikry/snazzybuddy.nvim'
+Plug 'AlphaTechnolog/pywal.nvim', { 'as': 'pywal' }
 
 " ------ NERDTree ------
 Plug 'scrooloose/nerdtree'
-
 " ------ Treesitter ------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -51,10 +45,17 @@ Plug 'peterhoeg/vim-qml'
 " ------ Git gutter ------
 Plug 'airblade/vim-gitgutter'
 
+" ------ Godot Engine integration ------
+Plug 'habamax/vim-godot'
+
+
 call plug#end()
 
 " ------ Mouse support ------
 set mouse=a
+
+" ------ Make split window open at the bottom ------
+set splitbelow
 
 " ------ Make background transparent ------
 let g:transparent_enabled = v:true
@@ -68,7 +69,7 @@ function! SynStack()
 endfunc
 
 function CorrectColorScheme()
-    " Make comments italics
+    " Make comments italics and pink
     highlight Comment gui=italic
     " Set highlighting of symbols to a more visible color 
     highlight link CocHighlightText Search
@@ -96,7 +97,8 @@ function CorrectColorScheme()
     highlight BufferTabpagesFill guibg=none
 
     " Change background color of floating window
-    "highlight CocFloating guibg=lightgray
+    highlight CocFloating guibg=White
+    highlight CocMenuSel guibg=LightGray
 
     " Create a highlight group for @decorators
     highlight link Decorator Number
@@ -114,7 +116,6 @@ function CorrectColorScheme()
     highlight TSParameter gui=NONE
     highlight TSMethod gui=NONE
 endfunction
-
 
 "Credit joshdick  
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -134,19 +135,17 @@ if (empty($TMUX))
 endif
 
 lua << EOF
-vim.g.background = 'dark'
+vim.g.background = 'light'
 require('colorbuddy').colorscheme('snazzybuddy')
 EOF
 
 " ------ Set the custom colorscheme ------
-"set background=light
-"let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+"set background=dark
 let g:one_allow_italics = 1
-colorscheme snazzybuddy
+"colorscheme pywal
 autocmd VimEnter * call CorrectColorScheme()
-
 " Enable line numbers on the left
-set number relativenumber
+set number
 
 " Enable syntax highlighting
 syntax enable
@@ -169,7 +168,7 @@ let mapleader = " "
 :command PI PlugInstall
 :command PC PlugClean
 :command NT NERDTree
-:command TT vsplit | term
+:command TT split | term
 :command TSU TSUpdate
 :command HI call SynStack()
 :command COC CocConfig
@@ -190,6 +189,10 @@ nnoremap <leader>h :noh<CR>
 
 " ------ Shortcut for next and prev in the quickfix list ------
 nnoremap <silent> <C-]> :cn<CR>
+
+" ------ Shortcut for GitGutter hunks
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 " ------ Customize tab icons ------
 let bufferline = get(g:, 'bufferline', {})
@@ -233,20 +236,6 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -272,6 +261,10 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use <leader>doc to show documentation in preview window.
 nnoremap <silent> <leader>doc :call <SID>show_documentation()<CR>
+
+" GitGutter hunk shortcuts
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -378,26 +371,30 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "====================LUA SCRIPT BELOW==============================
 lua << EOF
+-- Rainbow indent guides
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 
--- Config snazzbuddy
-require('colorbuddy').colorscheme('snazzybuddy')
-
-
--- Config for Onedark colorscheme
---require('onedark').setup {
- --   highlight_linenumber = true,
-  --  transparent = true,
-   -- variable_style = 'bold',
---}
-
--- Config for indent_blankline
 require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
+    space_char_blankline = " ",
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+        "IndentBlanklineIndent5",
+        "IndentBlanklineIndent6",
+    },
     show_current_context = true,
     show_current_context_start = true,
 }
 
--- Config for nvim autopairs
+-- Config for indent_blanklin-- Config for nvim autopairs
 require('nvim-autopairs').setup{}
 
 -- Config for treesitter modules
