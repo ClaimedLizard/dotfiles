@@ -61,7 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/leoli/.local/bin:$PATH"
 # Discord Bot token environment variable
-export BOT_TOKEN="MjkxNzc5NTI4NzE4ODExMTQ2.GvHGup.MN-dfBHMKtQN88Cpwz86uVoQTLV1NiuasXRDgo"
+export BOT_TOKEN="nothing to see here"
 
 # Set the default editor to nvim
 export VISUAL=nvim
