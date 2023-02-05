@@ -11,6 +11,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'tjdevries/colorbuddy.nvim'
 Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'AlphaTechnolog/pywal.nvim', { 'as': 'pywal' }
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " ------ NERDTree ------
 Plug 'scrooloose/nerdtree'
@@ -58,7 +59,7 @@ set mouse=a
 set splitbelow
 
 " ------ Make background transparent ------
-let g:transparent_enabled = v:true
+"let g:transparent_enabled = v:true
 
 " Define function to check highlight group under cursor
 function! SynStack()
@@ -95,8 +96,7 @@ function CorrectColorScheme()
     highlight BufferInactiveTarget guibg=none
     highlight BufferTabpages guibg=none
     highlight BufferTabpagesFill guibg=none
-
-    " Change background color of floating window
+" Change background color of floating window
     highlight CocFloating guibg=White
     highlight CocMenuSel guibg=LightGray
 
@@ -134,15 +134,10 @@ if (empty($TMUX))
   endif
 endif
 
-lua << EOF
-vim.g.background = 'light'
-require('colorbuddy').colorscheme('snazzybuddy')
-EOF
-
 " ------ Set the custom colorscheme ------
-"set background=dark
+"set background=light
 let g:one_allow_italics = 1
-"colorscheme pywal
+colorscheme catppuccin-latte
 autocmd VimEnter * call CorrectColorScheme()
 " Enable line numbers on the left
 set number
@@ -155,7 +150,7 @@ set shiftwidth=4
 set expandtab
 
 " ------ Disable nvim's custom cursor ------
-set guicursor= 
+"set guicursor= 
 
 " ------ Set vim to highlight cursor's line
 set cursorline
@@ -327,7 +322,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
-
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
