@@ -135,5 +135,8 @@ export MANGOHUD_CONFIG="ram,vram"
 reloadgrub() {
     sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
     sudo grub-mkconfig -o /boot/grub/grub.cfg
-    return 0
+}
+
+net-umount() {
+    sudo umount --all --lazy --types cifs
 }
