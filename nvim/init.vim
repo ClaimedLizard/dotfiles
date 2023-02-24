@@ -49,8 +49,14 @@ Plug 'airblade/vim-gitgutter'
 " ------ Godot Engine integration ------
 Plug 'habamax/vim-godot'
 
+" ------ Nvim telescope ------
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 call plug#end()
+
+" ------ Font for neovide ------
+set guifont=Victor\ Mono:h14
 
 " ------ Mouse support ------
 set mouse=a
@@ -70,7 +76,7 @@ function! SynStack()
 endfunc
 
 function CorrectColorScheme()
-    " Make comments italics and pink
+    " Make comments highlighted yellow
     highlight Comment gui=italic
     " Set highlighting of symbols to a more visible color 
     highlight link CocHighlightText Search
@@ -97,8 +103,8 @@ function CorrectColorScheme()
     highlight BufferTabpages guibg=none
     highlight BufferTabpagesFill guibg=none
 " Change background color of floating window
-    highlight CocFloating guibg=White
-    highlight CocMenuSel guibg=LightGray
+    "highlight CocFloating guibg=White
+    "highlight CocMenuSel guibg=LightGray
 
     " Create a highlight group for @decorators
     highlight link Decorator Number
@@ -137,7 +143,7 @@ endif
 " ------ Set the custom colorscheme ------
 "set background=light
 let g:one_allow_italics = 1
-colorscheme catppuccin-latte
+colorscheme catppuccin
 autocmd VimEnter * call CorrectColorScheme()
 " Enable line numbers on the left
 set number
@@ -168,6 +174,13 @@ let mapleader = " "
 :command HI call SynStack()
 :command COC CocConfig
 :command MDP CocCommand markdown-preview-enhanced.openPreview
+
+" ------ Telescope shortcuts ------
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " ------ Nerdtree map to Leader + n ------
 nmap <silent> <leader>n :NERDTreeToggle<CR>
