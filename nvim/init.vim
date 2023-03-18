@@ -72,7 +72,7 @@ set mouse=a
 set splitbelow
 
 " ------ Make background transparent ------
-"let g:transparent_enabled = v:true
+" let g:transparent_enabled = v:true
 
 " Define function to check highlight group under cursor
 function! SynStack()
@@ -83,8 +83,7 @@ function! SynStack()
 endfunc
 
 function CorrectColorScheme()
-    " Make comments highlighted yellow
-    highlight Comment gui=italic
+    highlight Comment gui=italic guifg=LightGreen
     " Set highlighting of symbols to a more visible color 
     highlight link CocHighlightText Search
 
@@ -175,12 +174,15 @@ let mapleader = " "
 :command EX Explore
 :command PI PlugInstall
 :command PC PlugClean
+:command PU PlugUpdate
 :command NT NERDTree
 :command TT split | term
 :command TSU TSUpdate
 :command HI call SynStack()
 :command COC CocConfig
 :command MDP CocCommand markdown-preview-enhanced.openPreview
+" ------ gdscript toolbox commands
+:command GDF !gdformat %:p
 
 " ------ Telescope shortcuts ------
 " Find files using Telescope command-line sugar.
@@ -422,6 +424,10 @@ vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+
 require("indent_blankline").setup {
     space_char_blankline = " ",
     char_highlight_list = {
@@ -434,6 +440,7 @@ require("indent_blankline").setup {
     },
     show_current_context = true,
     show_current_context_start = true,
+    show_end_of_line = true,
 }
 
 -- Config for indent_blanklin-- Config for nvim autopairs
