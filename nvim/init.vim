@@ -57,6 +57,9 @@ Plug 'habamax/vim-godot'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
+" ------ Diffview ------
+Plug 'sindrets/diffview.nvim'
+
 call plug#end()
 
 " ------ Enable filetype plugins ------
@@ -91,23 +94,23 @@ function CorrectColorScheme()
     highlight MatchParen guibg=Gray guifg=White
 
     " Fix barbar background colors
-    highlight BufferCurrent guifg=magenta guibg=none gui=bold
-    highlight BufferCurrentIndex guibg=none
-    highlight BufferCurrentSign guibg=none 
-    highlight BufferCurrentTarget guibg=none 
-    highlight BufferCurrentMod guibg=none gui=italic
-    highlight BufferVisible guibg=none
-    highlight BufferVisibleIndex guibg=none
-    highlight BufferVisibleMod guibg=none
-    highlight BufferVisibleSign guibg=none
-    highlight BufferVisibleTarget guibg=none
-    highlight BufferInactive guibg=none
-    highlight BufferInactiveIndex guibg=none
-    highlight BufferInactiveMod guibg=none
-    highlight BufferInactiveSign guibg=none
-    highlight BufferInactiveTarget guibg=none
-    highlight BufferTabpages guibg=none
-    highlight BufferTabpagesFill guibg=none
+    " highlight BufferCurrent guifg=magenta guibg=none gui=bold
+    " highlight BufferCurrentIndex guibg=none
+    " highlight BufferCurrentSign guibg=none
+    " highlight BufferCurrentTarget guibg=none
+    " highlight BufferCurrentMod guibg=none gui=italic
+    " highlight BufferVisible guibg=none
+    " highlight BufferVisibleIndex guibg=none
+    " highlight BufferVisibleMod guibg=none
+    " highlight BufferVisibleSign guibg=none
+    " highlight BufferVisibleTarget guibg=none
+    " highlight BufferInactive guibg=none
+    " highlight BufferInactiveIndex guibg=none
+    " highlight BufferInactiveMod guibg=none
+    " highlight BufferInactiveSign guibg=none
+    " highlight BufferInactiveTarget guibg=none
+    " highlight BufferTabpages guibg=none
+    " highlight BufferTabpagesFill guibg=none
 " Change background color of floating window
     "highlight CocFloating guibg=White
     "highlight CocMenuSel guibg=LightGray
@@ -181,8 +184,10 @@ let mapleader = " "
 :command HI call SynStack()
 :command COC CocConfig
 :command MDP CocCommand markdown-preview-enhanced.openPreview
-" ------ gdscript toolbox commands
+" ------ gdscript toolbox commands ------
 :command GDF !gdformat %:p
+" ------ Diffview ------
+:command DIFF DiffviewOpen
 
 " ------ Telescope shortcuts ------
 " Find files using Telescope command-line sugar.
@@ -241,7 +246,7 @@ let g:NERDToggleCheckAllLines = 1
 
 " ------ Customize tab icons ------
 let bufferline = get(g:, 'bufferline', {})
-let bufferline.icons = 'numbers' 
+let bufferline.icons = 'both' 
 let bufferline.icon_close_tab = 'x'
 
 " ------ Treesitter modules ------
@@ -483,7 +488,7 @@ require'nvim-treesitter.configs'.setup {
 --=================LUALINE DEFAULT CONFIG=========================
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
