@@ -9,7 +9,6 @@ Plug 'nvim-lualine/lualine.nvim'
 
 " ------ Themes ------
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'nyoom-engineering/oxocarbon.nvim'
 
 " ------ NERDTree ------
 Plug 'scrooloose/nerdtree'
@@ -154,9 +153,9 @@ if (empty($TMUX))
 endif
 
 " ------ Set the custom colorscheme ------
-set background=dark
+" set background=dark
 let g:one_allow_italics = 1
-colorscheme catppuccin
+colorscheme catppuccin-mocha
 autocmd VimEnter * call CorrectColorScheme()
 " Enable line numbers on the left
 set number
