@@ -1,6 +1,6 @@
 "Exit early if running from VSCode
 if exists('g:vscode')
-    finish
+
 endif
 
 call plug#begin()
@@ -9,9 +9,13 @@ Plug 'nvim-lualine/lualine.nvim'
 
 " ------ Themes ------
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'nyoom-engineering/oxocarbon.nvim'
 
 " ------ NERDTree ------
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'PhilRunninger/nerdtree-buffer-ops'
 
 " ------ NERD Commenter ------
 Plug 'preservim/nerdcommenter'
@@ -52,7 +56,7 @@ Plug 'habamax/vim-godot'
 
 " ------ Nvim telescope ------
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 
 " ------ Diffview ------
 Plug 'sindrets/diffview.nvim'
@@ -150,7 +154,7 @@ if (empty($TMUX))
 endif
 
 " ------ Set the custom colorscheme ------
-"set background=light
+set background=dark
 let g:one_allow_italics = 1
 colorscheme catppuccin
 autocmd VimEnter * call CorrectColorScheme()
@@ -188,6 +192,7 @@ let mapleader = " "
 :command GDF !gdformat %:p
 " ------ Diffview ------
 :command DIFF DiffviewOpen
+:command CIFF DiffviewClose
 
 " ------ Telescope shortcuts ------
 " Find files using Telescope command-line sugar.
