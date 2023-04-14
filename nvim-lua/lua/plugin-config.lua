@@ -1,3 +1,47 @@
+-- Config for catppuccin
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+    transparent_background = true,
+    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+    term_colors = false,
+    dim_inactive = {
+        enabled = false,
+        shade = "dark",
+        percentage = 0.15,
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        telescope = true,
+        notify = false,
+        mini = false,
+        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+})
+
 -- Rainbow indent guides config
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
@@ -63,7 +107,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---=================LUALINE DEFAULT CONFIG=========================
+-- Config for lualine
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -93,13 +137,13 @@ require('lualine').setup {
   extensions = {}
 }
 
---===================TOGGLETERM CONFIG==========================
+-- Config for toggleterm
 require("toggleterm").setup{
     open_mapping = [[<c-\>]],
     direction = 'float',
 }
 
---===================GITSIGNS CONFIG==========================
+-- Config for gitsigns
 require('gitsigns').setup{
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
@@ -141,7 +185,7 @@ require('gitsigns').setup{
   end
 }
 
---===================DIFFVIEW CONFIG==========================
+-- Config for diffview
 require("diffview").setup({
     merge_tool = {
         -- Config for conflicted files in diff views during a merge or rebase.
@@ -151,5 +195,5 @@ require("diffview").setup({
     },
 })
 
---===================NVIMTREE CONFIG==========================
+-- Config for nvim tree
 require("nvim-tree").setup()

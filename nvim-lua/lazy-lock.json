@@ -15,7 +15,7 @@
   "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
-  "telescope.nvim": { "branch": "master", "commit": "6258d50b09f9ae087317e392efe7c05a7323492d" },
+  "telescope.nvim": { "branch": "0.1.1", "commit": "6258d50b09f9ae087317e392efe7c05a7323492d" },
   "toggleterm.nvim": { "branch": "main", "commit": "026dff5e2b504941cf172691561a67ea362596aa" },
   "vim-fugitive": { "branch": "master", "commit": "ef99f1d90cdb33a52931aed5868785b51fb9411d" },
   "vim-godot": { "branch": "master", "commit": "c8555af61c6ddf7ecfcd4e4c25a217cbf93b82fa" }

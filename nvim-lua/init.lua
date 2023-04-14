@@ -20,3 +20,5 @@ require("options")
 require("keybindings")
 
 require("plugin-config")
+
+require("theme")
