@@ -1,21 +1,6 @@
 function CorrectColorScheme()
-    -- Set highlighting of symbols to a more visible color
-    vim.cmd('highlight link CocHighlightText Search')
-
     -- Add a background highlight to matching parantheses
-    vim.cmd('highlight MatchParen guibg=Gray guifg=White')
-
-    -- Create a highlight group for @decorators
-    -- vim.cmd('highlight link Decorator Number')
-    -- vim.cmd('match Decorator /\%u0040\{1}\a\+\>/')
-
-    -- Fix TreeSitter having italics everywhere
-    vim.cmd('highlight TSVariable gui=NONE')
-    vim.cmd('highlight TSFunction gui=NONE')
-    vim.cmd('highlight TSNumber gui=NONE')
-    vim.cmd('highlight TSFloat gui=NONE')
-    vim.cmd('highlight TSParameter gui=NONE')
-    vim.cmd('highlight TSMethod gui=NONE')
+    vim.api.nvim_set_hl(0, 'MatchParen', { bg='Gray', fg='White' })
 end
 
 ------ Make background transparent
