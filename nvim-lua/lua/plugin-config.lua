@@ -151,3 +151,5 @@ require("diffview").setup({
     },
 })
 
+--===================NVIMTREE CONFIG==========================
+require("nvim-tree").setup()

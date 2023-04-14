@@ -13,7 +13,7 @@ return {
     'neovim/nvim-lspconfig', -- Nvim LSP config
     'lewis6991/gitsigns.nvim', -- Git signs
     'habamax/vim-godot', -- Godot Engine integration
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    { 'nvim-telescope/telescope.nvim', branch = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' } }, -- Nvim telescope
     'sindrets/diffview.nvim', -- Diffview
     { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- Toggleterm

@@ -1,3 +1,4 @@
+plugins = require("plugins.plugins")
 ------ Bootstrap lazy.nvim ------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -12,10 +13,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("options.lua")
+require("lazy").setup(plugins)
 
-require("lazy").setup(plugins, opts)
+require("options")
 
-require("plugin-config.lua")
+require("keybindings")
 
-require("keybindings.lua")
+require("plugin-config")

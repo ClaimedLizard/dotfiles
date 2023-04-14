@@ -6,12 +6,12 @@ function CorrectColorScheme()
     vim.cmd('highlight MatchParen guibg=Gray guifg=White')
 
     -- Create a highlight group for @decorators
-    vim.cmd('highlight link Decorator Number')
-    vim.cmd('match Decorator /\%u0040\{1}\a\+\>/')
+    -- vim.cmd('highlight link Decorator Number')
+    -- vim.cmd('match Decorator /\%u0040\{1}\a\+\>/')
 
     -- Highlight group for TODO:
-    vim.cmd('highlight TODO gui=bold')
-    vim.cmd('2match TODO /\<TODO\%u003A\{1}/')
+    -- vim.cmd('highlight TODO gui=bold')
+    -- vim.cmd('2match TODO /\<TODO\%u003A\{1}/')
 
     -- Fix TreeSitter having italics everywhere
     vim.cmd('highlight TSVariable gui=NONE')
@@ -37,7 +37,7 @@ vim.opt.expandtab = true
 ------ Disable folding ------
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.nofoldenable
+vim.cmd('set nofoldenable')
 
 ------ Enable filetype plugins ------
 vim.cmd('filetype plugin on')
@@ -56,15 +56,12 @@ vim.opt.termguicolors = true
 
 ------ Set the custom colorscheme ------
 -- vim.opt.background = 'dark'
-vim.opt.colorscheme = 'catppuccin-mocha'
+vim.cmd('colorscheme catppuccin-latte')
 vim.api.nvim_create_autocmd({"VimEnter"}, {
     callback = CorrectColorScheme,
 })
 
 ------ Command shortcuts ------
-vim.api.nvim_create_user_command('PI', 'PlugInstall', {})
-vim.api.nvim_create_user_command('PC', 'PlugClean', {})
-vim.api.nvim_create_user_command('PU', 'PlugUpdate', {})
 vim.api.nvim_create_user_command('TSU', 'TSUpdate', {})
 
 vim.api.nvim_create_user_command('GDF', '!gdformat %:p', {})
