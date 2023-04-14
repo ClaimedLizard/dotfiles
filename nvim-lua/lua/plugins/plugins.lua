@@ -9,7 +9,7 @@ return {
     'lukas-reineke/indent-blankline.nvim', -- Indent Guides
     'windwp/nvim-autopairs', -- Nvim autopairs
     'xiyaowong/nvim-transparent', -- Transparent background
-    'p00f/nvim-ts-rainbow', -- Rainbow parantheses
+    'HiPhish/nvim-ts-rainbow2', -- Rainbow parantheses
     'neovim/nvim-lspconfig', -- Nvim LSP config
     'lewis6991/gitsigns.nvim', -- Git signs
     'habamax/vim-godot', -- Godot Engine integration

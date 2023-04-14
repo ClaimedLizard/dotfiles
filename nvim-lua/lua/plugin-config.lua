@@ -55,36 +55,39 @@ require('nvim-autopairs').setup{}
 
 -- Config for treesitter modules
 require'nvim-treesitter.configs'.setup {
-  highlight = {
-    ensure_installed = "maintained",
-    sync_install = false,
-    enable = true,
-    disable = { "" },
-    custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      -- ["foo.bar"] = "Identifier",
+    highlight = {
+        ensure_installed = "maintained",
+        sync_install = false,
+        enable = true,
+        disable = { "" },
+        custom_captures = {
+            -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+            -- ["foo.bar"] = "Identifier",
+        },
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
     },
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-  rainbow = {
-    enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true,-- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil,-- Do not enable for files with more than n lines, int
-  },
-  incremental_selection = {
-    enable = false,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+    rainbow = {
+        enable = true,
+        -- list of languages you want to disable the plugin for
+        -- disable = { 'jsx', 'cpp' },
+        -- Which query to use for finding delimiters
+        query = 'rainbow-parens',
+        -- Highlight the entire buffer all at once
+        strategy = require('ts-rainbow').strategy.global,
     },
-  },
+    incremental_selection = {
+        enable = false,
+        keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+        },
+    },
 }
 
 -- Config for lualine
