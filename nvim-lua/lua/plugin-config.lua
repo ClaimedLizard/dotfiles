@@ -239,3 +239,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 vim.diagnostic.config{
   float = { border=_border }
 }
+
+-- Hop Nvim easy motion config
+require'hop'.setup()

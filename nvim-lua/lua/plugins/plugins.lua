@@ -25,4 +25,5 @@ return {
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
     'L3MON4D3/LuaSnip', -- Luasnip for code snippets
+    'phaazon/hop.nvim', --Hop for easy motions
 }

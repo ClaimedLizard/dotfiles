@@ -57,3 +57,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
     end,
 })
+
+-- Hop nvim easy motion keybindings
+map('n', 'HL', '<Cmd>HopLine<CR>', opts)
+map('n', 'HW', '<Cmd>HopWord<CR>', opts)
+
