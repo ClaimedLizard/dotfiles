@@ -97,7 +97,6 @@ require('lualine').setup {
     theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
     always_divide_middle = true,
   },
   sections = {
@@ -108,16 +107,8 @@ require('lualine').setup {
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
   tabline = {},
-  extensions = {}
+  extensions = {'nvim-tree', 'toggleterm', 'fugitive'}
 }
 
 -- Config for toggleterm
@@ -149,10 +140,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
     window = {
@@ -168,7 +156,7 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For vsnip users.
+        { name = 'luasnip' },
     }, {
         { name = 'buffer' },
     })
@@ -211,18 +199,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.gdscript.setup{
     capabilities = capabilities
 }
---cmp_nvim_lsp.default_capabilities
-
--- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-  -- capabilities = capabilities
--- }
-
--- lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  -- settings = {
-    -- ['rust-analyzer'] = {},
-  -- },
--- }
 
 -- Enable borders in lsp floating windows
 local _border = "single"
@@ -245,3 +221,11 @@ vim.diagnostic.config{
 
 -- Hop Nvim easy motion config
 require'hop'.setup()
+
+-- Barbar tabs config
+require'barbar'.setup{
+     -- Set the filetypes which barbar will offset itself for
+  sidebar_filetypes = {
+    NvimTree = true,
+  },
+}
