@@ -122,12 +122,14 @@ require('gitsigns').setup()
 
 -- Config for diffview
 require("diffview").setup({
-    merge_tool = {
-        -- Config for conflicted files in diff views during a merge or rebase.
-        layout = "diff3_mixed",
-        disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
-        winbar_info = true,           -- See |diffview-config-view.x.winbar_info|
-    },
+    view = {
+        merge_tool = {
+            -- Config for conflicted files in diff views during a merge or rebase.
+            layout = "diff3_mixed",
+            disable_diagnostics = true,   -- Temporarily disable diagnostics for conflict buffers while in the view.
+            winbar_info = true,           -- See |diffview-config-view.x.winbar_info|
+        },
+    }
 })
 
 -- Config for nvim tree
@@ -155,11 +157,15 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    }, {
+        { name = 'nvim_lsp', keyword_length = 4, group_index = 1, max_item_count = 15 },
+        { name = 'luasnip', keyword_length = 2 },
         { name = 'buffer' },
-    })
+    }),
+    performance = {
+        trigger_debounce_time = 500,
+        throttle = 550,
+        fetching_timeout = 80,
+    },
 })
 
 -- Set configuration for specific filetype.
@@ -221,11 +227,3 @@ vim.diagnostic.config{
 
 -- Hop Nvim easy motion config
 require'hop'.setup()
-
--- Barbar tabs config
-require'barbar'.setup{
-     -- Set the filetypes which barbar will offset itself for
-  sidebar_filetypes = {
-    NvimTree = true,
-  },
-}

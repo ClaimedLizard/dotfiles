@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
         vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
@@ -62,3 +62,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
 map('n', 'HL', '<Cmd>HopLine<CR>', opts)
 map('n', 'HW', '<Cmd>HopWord<CR>', opts)
 
+-- Gitsigns keybindings
+local gs = require('gitsigns')
+
+-- Navigation
+vim.keymap.set('n', ']c', function()
+    if vim.wo.diff then return ']c' end
+    vim.schedule(function() gs.next_hunk() end)
+    return '<Ignore>'
+end, {expr=true})
+
+vim.keymap.set('n', '[c', function()
+    if vim.wo.diff then return '[c' end
+    vim.schedule(function() gs.prev_hunk() end)
+    return '<Ignore>'
+end, {expr=true})
+
+-- Actions
+vim.keymap.set({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+vim.keymap.set('n', '<leader>hS', gs.stage_buffer)
+vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk)
+vim.keymap.set('n', '<leader>hR', gs.reset_buffer)
+vim.keymap.set('n', '<leader>hp', gs.preview_hunk)
+vim.keymap.set('n', '<leader>hb', function() gs.blame_line{full=true} end)
+vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame)
+vim.keymap.set('n', '<leader>hd', gs.diffthis)
+vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
+vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
+
+-- Text object
+vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
