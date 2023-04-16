@@ -26,5 +26,11 @@ return {
     'hrsh7th/nvim-cmp',
     'L3MON4D3/LuaSnip', -- Luasnip for code snippets
     'saadparwaiz1/cmp_luasnip',
-    'phaazon/hop.nvim', --Hop for easy motions
+    'phaazon/hop.nvim', -- Hop for easy motions
+    {
+        "williamboman/mason.nvim", -- Mason for managing LSP server installs
+        build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    },
+    { 'williamboman/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
+    'mfussenegger/nvim-lint' -- Nvim-lint for linting support
 }

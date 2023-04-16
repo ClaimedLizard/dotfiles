@@ -135,6 +135,18 @@ require("diffview").setup({
 -- Config for nvim tree
 require("nvim-tree").setup()
 
+-- Mason nvim config
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {}
+    end,
+}
+
 -- Config for nvim-cmp
 local cmp = require("cmp")
 
@@ -157,7 +169,7 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp', keyword_length = 4, group_index = 1, max_item_count = 15 },
+        { name = 'nvim_lsp', keyword_length = 3, group_index = 1, max_item_count = 15 },
         { name = 'luasnip', keyword_length = 2 },
         { name = 'buffer' },
     }),
