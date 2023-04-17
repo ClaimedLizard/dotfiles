@@ -15,6 +15,9 @@ vim.opt.foldenable = false
 ------ Mouse support ------
 vim.opt.mouse = 'a'
 
+------ Line numbers ------
+vim.opt.number = true
+
 ------ Highlight the cursor's line ------
 vim.opt.cursorline = true
 
