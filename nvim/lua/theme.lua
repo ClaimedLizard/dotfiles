@@ -1,6 +1,6 @@
 function CorrectColorScheme()
     -- Add a background highlight to matching parantheses
-    vim.api.nvim_set_hl(0, 'MatchParen', { bg='Gray', fg='White' })
+    -- vim.api.nvim_set_hl(0, 'MatchParen', { bg='Gray', fg='White' })
     -- Fix Indent Blankline characters being blue
     vim.api.nvim_set_hl(0, 'IndentBlanklineSpaceChar', { link = 'IndentBlanklineChar' })
     vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { link = 'Linenr' })

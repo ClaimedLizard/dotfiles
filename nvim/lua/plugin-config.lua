@@ -11,6 +11,37 @@ require("catppuccin").setup({
     },
 })
 
+------ Config for nightfox ------
+require('nightfox').setup({
+  options = {
+    transparent = false,     -- Disable setting background
+    styles = {               -- Style to be applied to different syntax groups
+      comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
+      conditionals = "italic",
+      constants = "NONE",
+      functions = "italic",
+      keywords = "italic",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+    },
+    inverse = {             -- Inverse highlight for different types
+      match_paren = true,
+    },
+    modules = {             -- List of various plugins and additional options
+        gitsigns = true,
+        hop = true,
+        native_lsp = true,
+        nvimtree = true,
+        telescope = true,
+        treesitter = true,
+        tsrainbow2 = true
+    },
+  },
+})
+
 ------ Indent blankline guides config ------
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
