@@ -1,3 +1,6 @@
+------ Set the font for neovide ------
+vim.o.guifont = "Victor Mono:h13"
+
 ------ Set the leader key ------
 vim.g.mapleader = ' '
 
