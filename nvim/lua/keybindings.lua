@@ -25,19 +25,14 @@ vim.api.nvim_set_keymap("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 
 ------ NERD Commenter keymappings ------
-vim.api.nvim_set_var("NERDSpaceDelims", 1) -- Add spaces after comment delimiters by default
-vim.api.nvim_set_var("NERDCompactSexyComs", 1) -- Use compact synax for prettified multi-line comments
-vim.api.nvim_set_var("NERDCommentEmptyLines", 1) -- Allow commenting and inverting empty lines
-vim.api.nvim_set_var("NERDTrimTrailingWhitespace", 1) -- Enable trimming of trailing whitespace when uncommenting
-vim.api.nvim_set_var("NERDToggleCheckAllLines", 1) -- Enable to check all selected lines are commented or not
 map("n", "<leader>ci", ':call nerdcommenter#Comment(0, "toggle")<CR>', opts)
 map("v", "<leader>ci", ':call nerdcommenter#Comment(0, "toggle")<CR>', opts) 
 
 ------ Lsp config global mappings.------
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>er', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>eq', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
@@ -170,6 +165,5 @@ end
 
 require("nvim-tree").setup({
     on_attach = M.on_attach,
-    --
 })
 

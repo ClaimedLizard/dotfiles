@@ -137,15 +137,11 @@ require("diffview").setup({
 })
 
 ------ Config for nvim tree ------
-local gheight = vim.api.nvim_list_uis()[1].height
 require("nvim-tree").setup({
     actions = {
         open_file = {
             quit_on_open = true,
         }
-    },
-    view = {
-        side = "right",
     }
 })
 

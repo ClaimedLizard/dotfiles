@@ -34,8 +34,15 @@ vim.opt.termguicolors = true
 vim.api.nvim_create_user_command('TSU', 'TSUpdate', {})
 
 vim.api.nvim_create_user_command('GDF', '!gdformat %:p', {})
-vim.api.nvim_create_user_command('GDF', '!gdformat %:p', {})
 
 vim.api.nvim_create_user_command('DIFF', 'DiffviewOpen', {})
 vim.api.nvim_create_user_command('CIFF', 'DiffviewClose', {})
+
+------ NERD commenter options ------
+vim.api.nvim_set_var("NERDSpaceDelims", 1) -- Add spaces after comment delimiters by default
+vim.api.nvim_set_var("NERDCompactSexyComs", 1) -- Use compact synax for prettified multi-line comments
+vim.api.nvim_set_var("NERDCommentEmptyLines", 1) -- Allow commenting and inverting empty lines
+vim.api.nvim_set_var("NERDTrimTrailingWhitespace", 1) -- Enable trimming of trailing whitespace when uncommenting
+vim.api.nvim_set_var("NERDToggleCheckAllLines", 1) -- Enable to check all selected lines are commented or not
+
 

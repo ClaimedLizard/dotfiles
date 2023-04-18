@@ -46,8 +46,6 @@ return {
     { "williamboman/mason.nvim", build = ":MasonUpdate" }, -- Mason for managing LSP installs
     { 'williamboman/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
 
-    'xiyaowong/nvim-transparent', -- Transparent background
-
     'EdenEast/nightfox.nvim', -- Nightfox colorscheme
 
     'HiPhish/nvim-ts-rainbow2', -- Rainbow parantheses
