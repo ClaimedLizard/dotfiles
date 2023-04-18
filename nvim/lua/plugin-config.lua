@@ -37,7 +37,8 @@ require('nightfox').setup({
         nvimtree = true,
         telescope = true,
         treesitter = true,
-        tsrainbow2 = true
+        tsrainbow2 = true,
+        cmp = true,
     },
   },
 })
