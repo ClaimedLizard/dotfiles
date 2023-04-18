@@ -2,6 +2,7 @@ function CorrectColorScheme()
     -- Add a background highlight to matching parantheses
     vim.api.nvim_set_hl(0, 'MatchParen', { bg='Gray', fg='White' })
     vim.api.nvim_set_hl(0, 'IndentBlanklineSpaceChar', { link = 'Whitespace' })
+    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { link = 'Whitespace' })
 end
 
 ------ Make background transparent
