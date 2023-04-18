@@ -15,6 +15,9 @@ vim.opt.foldenable = false
 ------ Mouse support ------
 vim.opt.mouse = 'a'
 
+------ Always show the tabline ------
+vim.o.showtabline = 2
+
 ------ Line numbers ------
 vim.opt.number = true
 

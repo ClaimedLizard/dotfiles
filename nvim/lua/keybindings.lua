@@ -8,10 +8,21 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
------- Barbar move to previous/next tabs, close tab ------
-map('n', '<C-j>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<C-k>', '<Cmd>BufferNext<CR>', opts)
-map('n', '<C-x>', '<Cmd>BufferClose<CR>', opts)
+------ Navigate buffers ------
+map('n', '<C-j>', '<Cmd>bp<CR>', opts)
+map('n', '<C-k>', '<Cmd>bn<CR>', opts)
+map('n', '<C-x>', '<Cmd>bd!<CR>', opts)
+
+------ Tabby tabline keymappings ------
+vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tn", ":tabn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tp", ":tabp<CR>", { noremap = true })
+-- move current tab to previous position
+vim.api.nvim_set_keymap("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
+-- move current tab to next position
+vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 
 ------ NERD Commenter keymappings ------
 vim.api.nvim_set_var("NERDSpaceDelims", 1) -- Add spaces after comment delimiters by default

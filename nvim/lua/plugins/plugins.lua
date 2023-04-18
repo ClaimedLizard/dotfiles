@@ -1,11 +1,12 @@
 return {
     'kyazdani42/nvim-web-devicons', -- Cool icons
     'nvim-lualine/lualine.nvim', -- Lualine status bar
-    { 'catppuccin/nvim', name = 'catppuccin' }, --Catppuccin colorscheme
+    { 'catppuccin/nvim', name = 'catppuccin' }, -- Catppuccin colorscheme
+    'EdenEast/nightfox.nvim', -- Nightfox colorscheme
     'preservim/nerdcommenter', --NERD Commenter
     'nvim-treesitter/nvim-treesitter', -- Treesitter
     'nvim-tree/nvim-tree.lua', -- NERDTree for nvim
-    'romgrk/barbar.nvim', -- Barbar
+    'nanozuki/tabby.nvim', -- Tabby tab bar
     'lukas-reineke/indent-blankline.nvim', -- Indent Guides
     'windwp/nvim-autopairs', -- Nvim autopairs
     'xiyaowong/nvim-transparent', -- Transparent background
@@ -32,5 +33,5 @@ return {
         build = ":MasonUpdate" -- :MasonUpdate updates registry contents
     },
     { 'williamboman/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
-    'mfussenegger/nvim-lint' -- Nvim-lint for linting support
+    'mfussenegger/nvim-lint', -- Nvim-lint for linting support
 }

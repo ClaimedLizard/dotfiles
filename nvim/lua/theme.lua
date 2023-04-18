@@ -9,7 +9,7 @@ end
 
 ------ Set the custom colorscheme ------
 -- vim.opt.background = 'dark'
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('duskfox')
 vim.api.nvim_create_autocmd({'VimEnter'}, {
     callback = CorrectColorScheme,
 })

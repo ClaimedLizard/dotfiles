@@ -1,44 +1,17 @@
--- Config for catppuccin
+------ Config for catppuccin ------
 require("catppuccin").setup({
     flavour = "frappe", -- latte, frappe, macchiato, mocha
     transparent_background = false,
-    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-    term_colors = false,
-    dim_inactive = {
-        enabled = false,
-        shade = "dark",
-        percentage = 0.15,
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    styles = {
-        comments = { "italic" },
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
     integrations = {
         cmp = true,
         gitsigns = true,
         nvimtree = true,
         telescope = true,
-        notify = false,
-        mini = false,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
 
--- Indent blankline guides config
+------ Indent blankline guides config ------
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
@@ -50,10 +23,10 @@ require("indent_blankline").setup {
     show_end_of_line = true,
 }
 
--- Config for nvim autopairs
+------ Config for nvim autopairs ------
 require('nvim-autopairs').setup{}
 
--- Config for treesitter modules
+------ Config for treesitter modules ------
 require'nvim-treesitter.configs'.setup {
     highlight = {
         ensure_installed = "maintained",
@@ -90,19 +63,19 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
--- Config for lualine
+------ Config for lualine ------
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '|', right = '|'},
+    section_separators = { left = '', right = ''},
     always_divide_middle = true,
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {'buffers'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
@@ -111,16 +84,16 @@ require('lualine').setup {
   extensions = {'nvim-tree', 'toggleterm', 'fugitive'}
 }
 
--- Config for toggleterm
+------ Config for toggleterm ------
 require("toggleterm").setup{
     open_mapping = [[<c-\>]],
     direction = 'float',
 }
 
--- Config for gitsigns
+------ Config for gitsigns ------
 require('gitsigns').setup()
 
--- Config for diffview
+------ Config for diffview ------
 require("diffview").setup({
     view = {
         merge_tool = {
@@ -132,10 +105,10 @@ require("diffview").setup({
     }
 })
 
--- Config for nvim tree
+------ Config for nvim tree ------
 require("nvim-tree").setup()
 
--- Mason nvim config
+------ Mason nvim config ------
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
@@ -147,7 +120,7 @@ require("mason-lspconfig").setup_handlers {
     end,
 }
 
--- Config for nvim-cmp
+------ Config for nvim-cmp ------
 local cmp = require("cmp")
 
 cmp.setup({
@@ -207,7 +180,7 @@ cmp.setup.filetype('gitcommit', {
     })
   })
 
--- Config for lsp-config
+------ Config for lsp-config ------
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -237,5 +210,18 @@ vim.diagnostic.config{
   float = { border=_border }
 }
 
--- Hop Nvim easy motion config
+------ Hop Nvim easy motion config ------
 require'hop'.setup()
+
+------ Tabby tabline config ------
+require('tabby.tabline').use_preset('active_wins_at_tail', {
+  theme = {
+    fill = 'TabLineFill', -- tabline background
+    head = 'TabLine', -- head element highlight
+    current_tab = 'TabLineSel', -- current tab label highlight
+    tab = 'TabLine', -- other tab label highlight
+    win = 'TabLine', -- window highlight
+    tail = 'TabLine', -- tail element highlight
+  },
+  nerdfont = true, -- whether use nerdfont
+})
