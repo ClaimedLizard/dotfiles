@@ -4,8 +4,8 @@ function CorrectColorScheme()
 
     -- Fix Indent Blankline characters being blue
     vim.api.nvim_set_hl(0, 'IndentBlanklineSpaceChar', { link = 'IndentBlanklineChar' })
-    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { link = 'Linenr' })
-    vim.api.nvim_set_hl(0, 'IndentBlanklineContextSpaceChar', { link = 'Linenr' })
+    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { link = 'Whitespace' })
+    vim.api.nvim_set_hl(0, 'IndentBlanklineContextSpaceChar', { link = 'Whitespace' })
 end
 
 ------ Set the custom colorscheme ------
