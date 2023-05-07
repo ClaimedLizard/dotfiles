@@ -14,7 +14,7 @@ require("catppuccin").setup({
 ------ Config for nightfox ------
 require('nightfox').setup({
   options = {
-    transparent = false,     -- Disable setting background
+    transparent = true,     -- Disable setting background
     styles = {               -- Style to be applied to different syntax groups
       comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
       conditionals = "italic",
@@ -141,7 +141,7 @@ require("diffview").setup({
 require("nvim-tree").setup({
     actions = {
         open_file = {
-            quit_on_open = true,
+            quit_on_open = false,
         }
     }
 })
@@ -223,11 +223,9 @@ cmp.setup.filetype('gitcommit', {
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- lspconfig.pyright.setup {}
--- lspconfig.tsserver.setup {}
-lspconfig.gdscript.setup{
+lspconfig.gdscript.setup({
     capabilities = capabilities
-}
+})
 
 -- Enable borders in lsp floating windows
 local _border = "single"
@@ -244,9 +242,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   }
 )
 
-vim.diagnostic.config{
+vim.diagnostic.config({
   float = { border=_border }
-}
+})
 
 ------ Hop Nvim easy motion config ------
 require'hop'.setup()

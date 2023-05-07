@@ -45,4 +45,3 @@ vim.api.nvim_set_var("NERDCommentEmptyLines", 1) -- Allow commenting and inverti
 vim.api.nvim_set_var("NERDTrimTrailingWhitespace", 1) -- Enable trimming of trailing whitespace when uncommenting
 vim.api.nvim_set_var("NERDToggleCheckAllLines", 1) -- Enable to check all selected lines are commented or not
 
-

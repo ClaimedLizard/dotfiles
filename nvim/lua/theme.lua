@@ -10,7 +10,9 @@ end
 
 ------ Set the custom colorscheme ------
 -- vim.opt.background = 'dark'
-vim.cmd.colorscheme('nightfox')
+vim.g.neovide_transparency = 0.97 -- Make neovide transparent
+
+vim.cmd.colorscheme('dawnfox')
 vim.api.nvim_create_autocmd({'VimEnter'}, {
     callback = CorrectColorScheme,
 })
