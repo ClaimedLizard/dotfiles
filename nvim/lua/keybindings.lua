@@ -24,10 +24,6 @@ vim.api.nvim_set_keymap("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
 -- move current tab to next position
 vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 
------- NERD Commenter keymappings ------
-map("n", "<leader>ci", ':call nerdcommenter#Comment(0, "toggle")<CR>', opts)
-map("v", "<leader>ci", ':call nerdcommenter#Comment(0, "toggle")<CR>', opts) 
-
 ------ Lsp config global mappings.------
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>er', vim.diagnostic.open_float)

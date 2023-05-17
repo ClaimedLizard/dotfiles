@@ -14,7 +14,7 @@ require("catppuccin").setup({
 ------ Config for nightfox ------
 require('nightfox').setup({
   options = {
-    transparent = true,     -- Disable setting background
+    transparent = false,     -- Disable setting background
     styles = {               -- Style to be applied to different syntax groups
       comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
       conditionals = "italic",
@@ -310,3 +310,6 @@ require('tabby.tabline').set(function(line)
         hl = theme.fill,
     }
 end)
+
+------ comment.nvim default config ------
+require('Comment').setup()

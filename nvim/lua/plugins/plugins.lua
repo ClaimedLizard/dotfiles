@@ -23,6 +23,8 @@ return {
 
     'neovim/nvim-lspconfig', -- Ready-made lsp configuration
 
+    'numToStr/Comment.nvim', -- Nvim comment toggler
+
     'nvim-lualine/lualine.nvim', -- Lualine status bar
 
     { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } }, -- Nvim telescope
@@ -32,8 +34,6 @@ return {
     'nvim-treesitter/nvim-treesitter', -- Treesitter
 
     'phaazon/hop.nvim', -- Hop for easy motions
-
-    'preservim/nerdcommenter', --NERD Commenter
 
     'saadparwaiz1/cmp_luasnip', -- Luasnip integration into cmp
 
