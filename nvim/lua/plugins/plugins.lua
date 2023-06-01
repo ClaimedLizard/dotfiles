@@ -1,7 +1,11 @@
 return {
     { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- Toggleterm
 
+    'andrewferrier/wrapping.nvim', -- Wrapping for soft or hard wrapping modes
+
     { 'catppuccin/nvim', name = 'catppuccin' }, -- Catppuccin colorscheme
+
+    'folke/zen-mode.nvim', -- Zen mode
 
     'habamax/vim-godot', -- Godot Engine integration
 

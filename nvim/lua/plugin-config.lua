@@ -200,23 +200,23 @@ cmp.setup.filetype('gitcommit', {
     })
 })
 
-  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline({ '/', '?' }, {
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' }
+        { name = 'buffer' }
     }
-  })
+})
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+        { name = 'path' }
     }, {
-      { name = 'cmdline' }
+        { name = 'cmdline' }
     })
-  })
+})
 
 ------ Config for lsp-config ------
 -- Setup language servers.
@@ -313,3 +313,9 @@ end)
 
 ------ comment.nvim default config ------
 require('Comment').setup()
+
+------ wrapping.nvim default config ------
+require("wrapping").setup()
+
+------ zen-mode config ------
+require("zen-mode").setup()
