@@ -1,6 +1,6 @@
 ------ Config for catppuccin ------
 require("catppuccin").setup({
-    flavour = "frappe", -- latte, frappe, macchiato, mocha
+    flavour = "latte", -- latte, frappe, macchiato, mocha
     transparent_background = false,
     integrations = {
         cmp = true,
@@ -14,7 +14,7 @@ require("catppuccin").setup({
 ------ Config for nightfox ------
 require('nightfox').setup({
   options = {
-    transparent = true,     -- Disable setting background
+    transparent = false,     -- Disable setting background
     styles = {               -- Style to be applied to different syntax groups
       comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
       conditionals = "italic",
@@ -48,11 +48,10 @@ vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-    show_end_of_line = true,
+require("ibl").setup {
+    --space_char_blankline = " ",
+    --show_current_context = true,
+    --show_current_context_start = true,
 }
 
 ------ Config for nvim autopairs ------
@@ -119,7 +118,7 @@ require('lualine').setup {
 ------ Config for toggleterm ------
 require("toggleterm").setup{
     open_mapping = [[<c-\>]],
-    direction = 'float',
+    direction = 'tab',
 }
 
 ------ Config for gitsigns ------

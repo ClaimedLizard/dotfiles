@@ -31,7 +31,7 @@ return {
 
     'nvim-lualine/lualine.nvim', -- Lualine status bar
 
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.1', dependencies = { 'nvim-lua/plenary.nvim' } }, -- Nvim telescope
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' } }, -- Nvim telescope
 
     'nvim-tree/nvim-tree.lua', -- NERDTree for nvim
 
