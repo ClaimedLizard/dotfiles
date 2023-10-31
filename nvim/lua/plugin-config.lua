@@ -118,7 +118,8 @@ require('lualine').setup {
 ------ Config for toggleterm ------
 require("toggleterm").setup{
     open_mapping = [[<c-\>]],
-    direction = 'tab',
+    direction = 'float',
+    shade_terminals = false
 }
 
 ------ Config for gitsigns ------

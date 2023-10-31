@@ -41,6 +41,9 @@ return {
 
     'saadparwaiz1/cmp_luasnip', -- Luasnip integration into cmp
 
+    'briones-gabriel/darcula-solid.nvim', -- Darcula colorscheme
+    'rktjmp/lush.nvim', -- Requirement for Darcula colorscheme
+
     'sindrets/diffview.nvim', -- Diffview
 
     'tpope/vim-fugitive', -- Vim Fugitive, so good it should be illegal
