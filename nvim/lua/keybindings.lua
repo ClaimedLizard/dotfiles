@@ -1,17 +1,22 @@
-local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
+
+-- Make Q do nothing
+vim.keymap.set('n', 'Q', '<nop>')
 
 ------ Telescope keybindings ------
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fF', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
+vim.keymap.set('n', '<leader>fG', builtin.current_buffer_fuzzy_find, {})
 
 ------ Navigate buffers ------
-map('n', '<C-j>', '<Cmd>bp<CR>', opts)
-map('n', '<C-k>', '<Cmd>bn<CR>', opts)
-map('n', '<C-x>', '<Cmd>bd!<CR>', opts)
+vim.keymap.set('n', '<C-j>', '<Cmd>bp<CR>', opts)
+vim.keymap.set('n', '<C-k>', '<Cmd>bn<CR>', opts)
+vim.keymap.set('n', '<C-x>', '<Cmd>bd!<CR>', opts)
 
 ------ Tabby tabline keymappings ------
 vim.api.nvim_set_keymap("n", "ta", ":$tabnew<CR>", { noremap = true })
@@ -58,8 +63,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Hop nvim easy motion keybindings
-map('n', 'HL', '<Cmd>HopLine<CR>', opts)
-map('n', 'HW', '<Cmd>HopWord<CR>', opts)
+vim.keymap.set('n', 'HL', '<Cmd>HopLine<CR>', opts)
+vim.keymap.set('n', 'HW', '<Cmd>HopWord<CR>', opts)
 
 -- Gitsigns keybindings
 local gs = require('gitsigns')
@@ -94,7 +99,7 @@ vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
 -- Nvim tree keymappings
-map('n', '<leader>n', '<Cmd>NvimTreeToggle<CR>', opts)
+vim.keymap.set('n', '<leader>n', '<Cmd>NvimTreeToggle<CR>', opts)
 
 local M = {}
 local api = require("nvim-tree.api")
@@ -163,3 +168,5 @@ require("nvim-tree").setup({
     on_attach = M.on_attach,
 })
 
+-- oil-nvim keymapping
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -1,7 +1,7 @@
 ------ Config for catppuccin ------
 require("catppuccin").setup({
-    flavour = "latte", -- latte, frappe, macchiato, mocha
-    transparent_background = false,
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    transparent_background = true,
     integrations = {
         cmp = true,
         gitsigns = true,
@@ -14,7 +14,7 @@ require("catppuccin").setup({
 ------ Config for nightfox ------
 require('nightfox').setup({
   options = {
-    transparent = false,     -- Disable setting background
+    transparent = true,     -- Disable setting background
     styles = {               -- Style to be applied to different syntax groups
       comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
       conditionals = "italic",
@@ -48,11 +48,7 @@ vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
-require("ibl").setup {
-    --space_char_blankline = " ",
-    --show_current_context = true,
-    --show_current_context_start = true,
-}
+require("ibl").setup {}
 
 ------ Config for nvim autopairs ------
 require('nvim-autopairs').setup{}
@@ -76,8 +72,6 @@ require'nvim-treesitter.configs'.setup {
     },
     rainbow = {
         enable = true,
-        -- list of languages you want to disable the plugin for
-        -- disable = { 'jsx', 'cpp' },
         -- Which query to use for finding delimiters
         query = 'rainbow-parens',
         -- Highlight the entire buffer all at once
@@ -98,10 +92,11 @@ require'nvim-treesitter.configs'.setup {
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'modus-vivendi',
     component_separators = { left = '|', right = '|'},
     section_separators = { left = '', right = ''},
     always_divide_middle = true,
+    globalstatus = true,
   },
   sections = {
     lualine_a = {'mode'},
@@ -141,7 +136,7 @@ require("diffview").setup({
 require("nvim-tree").setup({
     actions = {
         open_file = {
-            quit_on_open = false,
+            quit_on_open = true,
         }
     }
 })
@@ -177,7 +172,7 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp', keyword_length = 3, group_index = 1, max_item_count = 15 },
@@ -250,18 +245,6 @@ vim.diagnostic.config({
 require'hop'.setup()
 
 ------ Tabby tabline config ------
-require('tabby.tabline').use_preset('active_wins_at_tail', {
-  theme = {
-    fill = 'TabLineFill', -- tabline background
-    head = 'TabLine', -- head element highlight
-    current_tab = 'TabLineSel', -- current tab label highlight
-    tab = 'TabLine', -- other tab label highlight
-    win = 'TabLine', -- window highlight
-    tail = 'TabLine', -- tail element highlight
-  },
-  nerdfont = true, -- whether use nerdfont
-})
-
 local theme = {
   fill = 'TabLineFill',
   -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
@@ -271,44 +254,42 @@ local theme = {
   win = 'TabLine',
   tail = 'TabLine',
 }
-
 require('tabby.tabline').set(function(line)
-    return {
-        {
-            { '  ', hl = theme.head },
-            line.sep('|', theme.head, theme.fill),
-        },
-        line.tabs().foreach(function(tab)
-            local hl = tab.is_current() and theme.current_tab or theme.tab
-            return {
-                line.sep('|', hl, theme.fill),
-                tab.is_current() and '' or '',
-                tab.number(),
-                tab.name(),
-                tab.close_btn(''),
-                line.sep(' ', hl, theme.fill),
-                hl = hl,
-                margin = ' ',
-            }
-        end),
-        line.spacer(),
-        line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-            local hl = win.is_current() and theme.current_tab or theme.tab
-            return {
-                line.sep('|', theme.win, theme.fill),
-                win.is_current() and '' or '',
-                win.buf_name(),
-                line.sep('|', theme.win, theme.fill),
-                hl = hl,
-                margin = ' ',
-            }
-        end),
-        {
-            line.sep('|', theme.tail, theme.fill),
-            { '  ', hl = theme.tail },
-        },
-        hl = theme.fill,
-    }
+  return {
+    {
+      { '  ', hl = theme.head },
+      line.sep('|', theme.head, theme.fill),
+    },
+    line.tabs().foreach(function(tab)
+      local hl = tab.is_current() and theme.current_tab or theme.tab
+      return {
+        line.sep(' ', hl, theme.fill),
+        -- tab.is_current() and '' or '󰆣',
+        tab.number(),
+        -- tab.name(),
+        -- tab.close_btn(''),
+        line.sep(' ', hl, theme.fill),
+        hl = hl,
+        margin = ' ',
+      }
+    end),
+    -- line.spacer(),
+    line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+      return {
+        -- line.sep('|', theme.win, theme.fill),
+        win.is_current() and '' or '',
+        win.buf_name(),
+        line.sep('|', theme.win, theme.fill),
+        hl = theme.win,
+        margin = ' ',
+      }
+    end),
+    {
+      line.sep('|', theme.tail, theme.fill),
+      { '  ', hl = theme.tail },
+    },
+    hl = theme.fill,
+  }
 end)
 
 ------ comment.nvim default config ------
@@ -319,3 +300,6 @@ require("wrapping").setup()
 
 ------ zen-mode config ------
 require("zen-mode").setup()
+
+------ oil-nvim config ------
+require("oil").setup()

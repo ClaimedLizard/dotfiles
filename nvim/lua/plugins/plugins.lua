@@ -5,6 +5,9 @@ return {
 
     { 'catppuccin/nvim', name = 'catppuccin' }, -- Catppuccin colorscheme
 
+    'briones-gabriel/darcula-solid.nvim', -- Darcula colorscheme
+    'rktjmp/lush.nvim', -- Requirement for Darcula colorscheme
+
     'folke/zen-mode.nvim', -- Zen mode
 
     'habamax/vim-godot', -- Godot Engine integration
@@ -41,10 +44,9 @@ return {
 
     'saadparwaiz1/cmp_luasnip', -- Luasnip integration into cmp
 
-    'briones-gabriel/darcula-solid.nvim', -- Darcula colorscheme
-    'rktjmp/lush.nvim', -- Requirement for Darcula colorscheme
-
     'sindrets/diffview.nvim', -- Diffview
+
+    'stevearc/oil.nvim', -- oil nvim file explorer
 
     'tpope/vim-fugitive', -- Vim Fugitive, so good it should be illegal
 

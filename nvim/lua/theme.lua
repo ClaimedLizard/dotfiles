@@ -12,8 +12,8 @@ end
 -- vim.opt.background = 'dark'
 -- vim.g.neovide_transparency = 0.97 -- Make neovide transparent
 
-vim.cmd.colorscheme('darcula-solid')
 vim.o.termguicolors = true
+vim.cmd.colorscheme('catppuccin')
 vim.api.nvim_create_autocmd({'VimEnter'}, {
     callback = CorrectColorScheme,
 })

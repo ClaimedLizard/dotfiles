@@ -23,6 +23,9 @@ vim.o.showtabline = 2
 
 ------ Line numbers ------
 vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 8
+-- vim.opt.colorcolumn = '80'
 
 ------ Highlight the cursor's line ------
 vim.opt.cursorline = true
@@ -40,4 +43,7 @@ vim.api.nvim_create_user_command('GDF', '!gdformat %:p', {})
 
 vim.api.nvim_create_user_command('DIFF', 'DiffviewOpen', {})
 vim.api.nvim_create_user_command('CIFF', 'DiffviewClose', {})
+
+vim.api.nvim_create_user_command('SS', 'vsplit', {})
+vim.api.nvim_create_user_command('HS', 'split', {})
 
